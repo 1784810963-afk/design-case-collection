@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss init -p)",
+      "Bash(node_modules/.bin/tailwindcss:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(timeout:*)",
+      "Bash(taskkill /F /FI \"WINDOWTITLE eq *node*\")",
+      "Bash(curl:*)",
+      "Bash(taskkill:*)",
+      "Bash(node:*)",
+      "Bash(ping:*)",
+      "Bash(findstr:*)",
+      "Bash(tasklist:*)",
+      "Bash(powershell \"Get-Process node -ErrorAction SilentlyContinue | Select-Object Id,ProcessName | Format-Table\")",
+      "Bash(powershell \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force\")",
+      "Bash(powershell \"Stop-Process -Name node -Force\")",
+      "Bash(netstat:*)",
+      "Bash(dir:*)",
+      "Bash(npm run server:*)",
+      "Bash(git --version:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}
