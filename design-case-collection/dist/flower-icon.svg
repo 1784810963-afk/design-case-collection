@@ -1,0 +1,14 @@
+<svg viewBox="0 -10 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 上花瓣 -->
+  <ellipse cx="60" cy="25" rx="20" ry="28" fill="#9BB8D3"/>
+  <!-- 左上花瓣 -->
+  <ellipse cx="30" cy="40" rx="20" ry="28" fill="#9BB8D3" transform="rotate(-72 30 40)"/>
+  <!-- 右上花瓣 -->
+  <ellipse cx="90" cy="40" rx="20" ry="28" fill="#9BB8D3" transform="rotate(72 90 40)"/>
+  <!-- 左下花瓣 -->
+  <ellipse cx="40" cy="85" rx="20" ry="28" fill="#9BB8D3" transform="rotate(-144 40 85)"/>
+  <!-- 右下花瓣 -->
+  <ellipse cx="80" cy="85" rx="20" ry="28" fill="#9BB8D3" transform="rotate(144 80 85)"/>
+  <!-- 花蕊 -->
+  <circle cx="60" cy="60" r="18" fill="#6B8CAE"/>
+</svg>
