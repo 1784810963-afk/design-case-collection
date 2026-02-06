@@ -147,9 +147,11 @@ export default function CaseCard({ case: caseData, onDelete, onRetry, onEditKeyw
           alt={caseData.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-2 right-2 px-2 py-1 bg-black/50 text-white text-xs rounded backdrop-blur-sm">
-          {caseData.source}
-        </div>
+        {caseData.source !== 'other' && (
+          <div className="absolute top-2 right-2 px-2 py-1 bg-black/50 text-white text-xs rounded backdrop-blur-sm">
+            {caseData.source}
+          </div>
+        )}
       </div>
 
       {/* 内容区域 */}
