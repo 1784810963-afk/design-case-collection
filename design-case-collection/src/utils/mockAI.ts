@@ -1,7 +1,12 @@
 import type { MockCaseData } from '../types';
 
 // 后端API地址 - 支持环境变量配置
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// 开发环境：http://localhost:3001
+// 生产环境：使用 Netlify Functions (/.netlify/functions)
+const API_BASE_URL = import.meta.env.VITE_API_URL ||
+  (typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? 'http://localhost:3001'
+    : '');
 
 // 验证URL格式 - 接受任何有效的URL
 export function validateUrl(url: string): boolean {
@@ -15,11 +20,22 @@ export function validateUrl(url: string): boolean {
 
 // 真实的网页分析 - 调用后端API
 export async function analyzeCaseUrl(url: string): Promise<MockCaseData> {
-  console.log('[mockAI] 开始调用后端API:', `${API_BASE_URL}/api/analyze`);
+  // 确定 API 路由
+  let apiUrl: string;
+
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    // 开发环境
+    apiUrl = `${API_BASE_URL}/api/analyze`;
+  } else {
+    // 生产环境使用 Netlify Functions
+    apiUrl = '/.netlify/functions/analyze';
+  }
+
+  console.log('[mockAI] 开始调用后端API:', apiUrl);
   console.log('[mockAI] 请求URL:', url);
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/analyze`, {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
