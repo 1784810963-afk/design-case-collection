@@ -26,7 +26,19 @@
       "Bash(git --version:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push)",
+      "Bash(git push:*)",
+      "Bash(powershell -Command \"Get-ChildItem ''e:\\\\000 下载文件\\\\00python\\\\Design case collection'' -Filter ''*NETLIFY*'' -File | Select-Object Name\")",
+      "Bash(powershell -Command \"Get-ChildItem ''e:\\\\000 下载文件\\\\00python\\\\Design case collection\\\\design-case-collection'' -Filter ''netlify.toml'' -File\")",
+      "Bash(powershell:*)",
+      "Bash(for endpoint in \"extract\" \"fetch\" \"scrape\" \"url\" \"crawl\" \"parse\" \"content\")",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(for endpoint in \"ocr\" \"extract\" \"url\" \"fetch\")"
     ]
   }
 }
