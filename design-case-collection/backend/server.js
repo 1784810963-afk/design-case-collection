@@ -57,7 +57,7 @@ app.post('/api/analyze', async (req, res) => {
 });
 
 // 启动服务器
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ╔════════════════════════════════════════╗
 ║   设计案例收集 - 后端服务已启动        ║
