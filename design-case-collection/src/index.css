@@ -2,12 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============ 基础样式规范 ============ */
+
 /* 确保滚动条始终占位，避免页面宽度跳动 */
 html {
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
-/* 自定义骨架屏动画 */
+body {
+  @apply bg-neutral-50 text-neutral-text font-sans antialiased;
+}
+
+/* ============ 动画定义 ============ */
+
+/* 骨架屏加载动画 */
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -22,3 +31,203 @@ html {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 1000px 100%;
 }
+
+/* 卡片进入动画 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* 弹窗背景淡入 */
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+.animate-backdrop-in {
+  animation: fadeInBackdrop 0.3s ease-out;
+}
+
+/* 弹窗内容放大进入 */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* 脉冲加载动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* 旋转加载动画 */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-fast {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============ 可复用组件类 ============ */
+
+/* 卡片基础样式 */
+.card-base {
+  @apply bg-white rounded-lg border border-neutral-200 transition-all duration-base;
+}
+
+.card-base:hover {
+  @apply border-primary-200 shadow-hover;
+}
+
+/* 按钮基础样式 */
+.btn-base {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium transition-all duration-fast;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
+}
+
+/* 主要按钮 */
+.btn-primary {
+  @apply btn-base bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700;
+}
+
+/* 次要按钮 */
+.btn-secondary {
+  @apply btn-base bg-neutral-100 text-neutral-text hover:bg-neutral-200 active:bg-neutral-300;
+}
+
+/* 幽灵按钮 */
+.btn-ghost {
+  @apply btn-base text-neutral-text hover:bg-neutral-100 active:bg-neutral-200;
+}
+
+/* 危险按钮 */
+.btn-danger {
+  @apply btn-base bg-error text-white hover:bg-red-600 active:bg-red-700;
+}
+
+/* 输入框基础样式 */
+.input-base {
+  @apply w-full px-3 py-2 border border-neutral-200 rounded-md bg-white transition-all duration-fast;
+  @apply focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
+  @apply placeholder:text-neutral-400;
+}
+
+/* 标签 - Pills 风格 */
+.badge {
+  @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium;
+  @apply bg-primary-100 text-primary-700;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-700;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-700;
+}
+
+.badge-error {
+  @apply bg-red-100 text-red-700;
+}
+
+/* 文本 Truncate 单行 */
+.line-clamp-1 {
+  @apply truncate;
+}
+
+/* ============ 深色模式支持 ============ */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-neutral-900 text-neutral-100;
+  }
+
+  .card-base {
+    @apply bg-neutral-800 border-neutral-700;
+  }
+
+  .card-base:hover {
+    @apply border-primary-600;
+  }
+
+  .btn-secondary {
+    @apply bg-neutral-700 text-neutral-100 hover:bg-neutral-600;
+  }
+
+  .btn-ghost {
+    @apply text-neutral-100 hover:bg-neutral-800;
+  }
+
+  .input-base {
+    @apply bg-neutral-800 border-neutral-700 text-neutral-100;
+    @apply focus:border-primary-500;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #404040 25%, #505050 50%, #404040 75%);
+  }
+}
+
+/* ============ 响应式优化 ============ */
+
+@media (max-width: 768px) {
+  .btn-base {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .input-base {
+    @apply text-base; /* 防止 iOS 自动缩放 */
+  }
+}
+

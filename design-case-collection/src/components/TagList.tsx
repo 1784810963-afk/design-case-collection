@@ -16,8 +16,7 @@ export default function TagList({ tags, maxVisible = 6 }: TagListProps) {
       {visibleTags.map((tag, index) => (
         <span
           key={index}
-          className="px-3 py-1 bg-primary-light text-primary text-xs font-medium rounded-full
-                     hover:bg-primary hover:text-white transition-colors cursor-pointer"
+          className="badge bg-primary-100 text-primary-700"
         >
           #{tag}
         </span>
